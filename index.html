@@ -8,11 +8,13 @@
 		<meta name="author" content="Frank Elavsky">
 
 		<link rel="stylesheet" type="text/css" href="scripts/main.css"/>
+		<link rel="stylesheet" type="text/css" href="scripts/leaflet.css" />
 
 		<!-- LOAD DEPENDENCIES -->
 		<script type="text/javascript" src="scripts/libs/d3.js"></script>
 		<script type="text/javascript" src="scripts/libs/jquery.js"></script>
 		<script type="text/javascript" src="scripts/libs/typeahead.js"></script>
+		<script type="text/javascript" src="scripts/libs/leaflet.js"></script>
 
 		<meta property="og:image" content="preview.png" />
 
@@ -26,14 +28,19 @@
 			<input class="typeahead" type="text" placeholder="Find your city...">
 		</div>
 		<div id='tilde_notice' class='tilde-center-text' style='opacity:1'>Search to discover your city's resilience to automation.<br>&nbsp;</div>
-		<div id='map_svg'></div>
+		<div class='needle-wrapper'>
+			<div id='map'></div>
+			<div id='needle'></div>
+		</div>
 		<div id='citations'><b>Visualization</b>: Frank Elavsky (NUIT)</div>
 	</body>
 	<script type="text/javascript" src="scripts/mods/tilde.js"></script>
 	<script type="text/javascript" src="scripts/mods/starters.js"></script>
 	<script type="text/javascript" src="scripts/data/data.js"></script>
 	<script type="text/javascript" src="scripts/mods/query.js"></script>
-	<script type="text/javascript" src="scripts/mods/typeahead.js"></script>
+	<script type="text/javascript" src="scripts/mods/city_typeahead.js"></script>
+	<script type="text/javascript" src="scripts/mods/map.js"></script>
 	<script type="text/javascript" src="scripts/mods/frame.js"></script>
 	<script type="text/javascript" src="scripts/mods/draw.js"></script>
+
 </html>

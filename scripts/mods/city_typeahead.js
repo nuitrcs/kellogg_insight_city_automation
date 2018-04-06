@@ -1,12 +1,32 @@
+tilde.cities.forEach(function(d){
+    //console.log(d)
+    var newLocation = '',
+        j = d.Location.length,
+        i;
+    for (i = 0; i < j; i++) {
+        var str = d.Location.substring(i,i+1)
+        if (str === ',') {
+            str = d.Location.substring(i,j)
+            newLocation += str
+            break
+        }
+        if (str === '-') {
+            str = ' - '
+        }
+        newLocation += str
+    }
+    d.Location = newLocation
+})
+
 // Constructing the suggestion engine
-tilde.occupations = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('n'),
+tilde.bloodhound = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('Location'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
-    identify: function(obj){ return obj.n; },
-    local: tilde.occupations
+    identify: function(obj){ return obj.Location; },
+    local: tilde.cities
 });
 
-tilde.occupations.initialize()
+tilde.bloodhound.initialize()
 
 // Initializing the typeahead
 $('#job_dropdown .typeahead').typeahead({
@@ -15,9 +35,9 @@ $('#job_dropdown .typeahead').typeahead({
     minLength: 1 /* Specify minimum characters required for showing suggestions */
 },
 {
-    name: 'occupations',
-    displayKey: 'n',
-    source: tilde.occupations,
+    name: 'cities',
+    displayKey: 'Location',
+    source: tilde.bloodhound,
     templates: {
         empty: [
           '<div class="empty-message">',
@@ -28,15 +48,7 @@ $('#job_dropdown .typeahead').typeahead({
 });
 
 $('#job_dropdown .typeahead').bind('typeahead:selected', function(obj, datum, name) {  
-    if (tilde.unlocked) {
-        tilde.unlocked = false
-        tilde.current_selection = datum
-        tilde.query.prepareData()
-        $('input').blur()
-    }    
-    
+    tilde.current_selection = datum
+    tilde.query.prepareData()
+    $('input').blur()
 });
-
-// https://twitter.github.io/typeahead.js/examples/
-// https://github.com/twitter/typeahead.js/blob/master/doc/jquery_typeahead.md#custom-events
-// https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/bootstrap-typeahead.php

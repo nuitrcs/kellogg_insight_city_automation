@@ -3,6 +3,53 @@ body {
     font-family: Arial, sans-serif;
     margin:0;
 }
+#map {
+    width:100%;
+    height:500px;
+}
+#tilde_notice {
+    text-align: center;
+    font-size: 75%;
+}
+#citations {
+    text-align: center;
+    font-size:60%;
+}
+
+.needle-wrapper {
+    position:relative;
+}
+.chart-gauge{
+  width: 400px;
+  margin: 100px auto  
+ } 
+.chart-filled{
+    fill: darkgrey;
+}
+.chart-empty{
+    fill: #dedede;
+}
+
+.needle, .needle-center{
+    fill: #464A4F;
+}
+
+#needle {
+    pointer-events: none;
+    opacity:0;
+    position:absolute;
+    width:60%;
+    max-width: 300px;
+    right:8%;
+    top:5%;
+}
+
+#needle svg {
+    position:absolute;
+    top:0;
+    z-index: 100;
+}
+
 
 
 .twitter-typeahead {
