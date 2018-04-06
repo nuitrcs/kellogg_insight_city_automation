@@ -37,7 +37,7 @@ tilde.map.move = function(lat,lng) {
 tilde.map.mark = function(data) {
   tilde.map.markerGroup.clearLayers()
   tilde.marker = L.marker([data.Lat, data.Lng]).addTo(tilde.map.markerGroup)
-  var popup_html = '<h3><b>' + data['Location'] + '</b></h3><p>Automation risk: '+d.ai+'<br>Affected Employment: '+d.e+'</p>';
+  var popup_html = '<h3><b>' + data['Location'] + '</b></h3><p><b>Automation risk</b>: '+round(data.ai*100,2)+'%<br><b>Affected Employment</b>: '+data.e+'</p>';
   tilde.marker.bindPopup(popup_html);
   tilde.marker.openPopup()
 }
