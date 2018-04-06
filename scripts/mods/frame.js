@@ -1,0 +1,9 @@
+tilde.windowwidth = $(window).width()*0.97;
+tilde.windowheight = tilde.windowwidth*1.2;
+tilde.margin = {top: tilde.windowwidth*0.01, right: tilde.windowwidth*0.02, bottom: tilde.windowwidth*0.01, left: tilde.windowwidth*0.02};
+tilde.width = tilde.windowwidth - tilde.margin.left - tilde.margin.right;
+tilde.height = tilde.windowheight - tilde.margin.top - tilde.margin.bottom;
+tilde.spacing = tilde.windowwidth*0.008;
+tilde.animate = {};
+tilde.tooltips = {};
+tilde.tooltip = d3.select("body").append("div").attr("class", "tooltip");

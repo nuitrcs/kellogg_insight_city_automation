@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 
+		<meta charset="utf-8">
+		<title>City Automation Resilience</title>
+		<meta name="description" content="City Automation Resilience">
+		<meta name="author" content="Frank Elavsky">
+
+		<link rel="stylesheet" type="text/css" href="scripts/main.css"/>
+
+		<!-- LOAD DEPENDENCIES -->
+		<script type="text/javascript" src="scripts/libs/d3.js"></script>
+		<script type="text/javascript" src="scripts/libs/jquery.js"></script>
+		<script type="text/javascript" src="scripts/libs/typeahead.js"></script>
+
+		<meta property="og:image" content="preview.png" />
+
+		<meta property="og:description" content="Jobs may be replaced in the future. This tool lets you find your city and see how resilient it is to job automation." />
+
+		<meta property="og:title" content="Discover your city's resilience to automation" />
+
+	</head>
+	<body>
+		<div id="job_dropdown" class='tilde-centered'>
+			<input class="typeahead" type="text" placeholder="Find your city...">
+		</div>
+		<div id='tilde_notice' class='tilde-center-text' style='opacity:1'>Search to discover your city's resilience to automation.<br>&nbsp;</div>
+		<div id='map_svg'></div>
+		<div id='citations'><b>Visualization</b>: Frank Elavsky (NUIT)</div>
+	</body>
+	<script type="text/javascript" src="scripts/mods/tilde.js"></script>
+	<script type="text/javascript" src="scripts/mods/starters.js"></script>
+	<script type="text/javascript" src="scripts/data/data.js"></script>
+	<script type="text/javascript" src="scripts/mods/query.js"></script>
+	<script type="text/javascript" src="scripts/mods/typeahead.js"></script>
+	<script type="text/javascript" src="scripts/mods/frame.js"></script>
+	<script type="text/javascript" src="scripts/mods/draw.js"></script>
+</html>
