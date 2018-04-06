@@ -1,7 +1,7 @@
 tilde.map = L.map('map');
 tilde.employmentDomain = [0,7614660]
-tilde.ai_riskDomain = [0.507867024,0.56,0.59,0.731438356]
-tilde.colorRange = ["#7AFF65","#FF8118","#FF9300","#CA002B"]
+tilde.ai_riskDomain = [0.507867024,0.66,0.731438356]
+tilde.colorRange = ["#87FF7B","#FF9300","#AD0012"]
 tilde.radiusScale = d3.scale.linear().domain(tilde.employmentDomain).range([0,50000])
 tilde.colorScale = d3.scale.linear().domain(tilde.ai_riskDomain).range(tilde.colorRange)
 
@@ -21,20 +21,13 @@ for (var num = 0; num < tilde.cities.length; num++) {
   var circle = L.circle([place_lat, place_long], {
       color: tilde.colorScale(d.ai),
       stroke: false,
-      fillOpacity:.8,
+      fillOpacity:.9,
       data: d,
       radius: 314*Math.sqrt(tilde.radiusScale(d.e))
   }).addTo(tilde.map.circleGroup)
 }
 tilde.map.circleGroup.on('click',function(e){
   tilde.map.circleClick(e)
-});
-
-var myIcon = L.icon({
-  iconUrl: 'https://cldup.com/jsXu-OReqo-3000x3000.png',
-  iconSize: [50,50],
-  iconAnchor: [24,50],
-  popupAnchor: [1,-50]
 });
 
 tilde.map.move = function(lat,lng) {
@@ -44,8 +37,9 @@ tilde.map.move = function(lat,lng) {
 tilde.map.mark = function(data) {
   tilde.map.markerGroup.clearLayers()
   tilde.marker = L.marker([data.Lat, data.Lng]).addTo(tilde.map.markerGroup)
-  var popup_html = '<h3>' + data['Location'] + '</h3>';
+  var popup_html = '<h3><b>' + data['Location'] + '</b></h3><p>Automation risk: '+d.ai+'<br>Affected Employment: '+d.e+'</p>';
   tilde.marker.bindPopup(popup_html);
+  tilde.marker.openPopup()
 }
 
 tilde.map.circleClick = function(e) {

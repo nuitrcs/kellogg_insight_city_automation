@@ -17,6 +17,7 @@ body {
 }
 
 .needle-wrapper {
+    height:500px;
     position:relative;
 }
 .chart-gauge{
@@ -40,8 +41,8 @@ body {
     position:absolute;
     width:60%;
     max-width: 300px;
-    right:8%;
-    top:5%;
+    right:5%;
+    bottom:35%;
 }
 
 #needle svg {
