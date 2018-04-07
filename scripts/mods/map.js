@@ -5,8 +5,11 @@ tilde.colorRange = ["#87FF7B","#FF9300","#AD0012"]
 tilde.radiusScale = d3.scale.linear().domain(tilde.employmentDomain).range([0,50000])
 tilde.colorScale = d3.scale.linear().domain(tilde.ai_riskDomain).range(tilde.colorRange)
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-  attribution: '<b>Visualization and Map</b>: Frank Elavsky (NUIT) | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+//mapbox.streets
+//mapbox.light
+L.tileLayer('https://api.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token={accessToken}', {
+  attribution: '<b>Visualization and Map</b>: Frank Elavsky (NUIT) | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
+  accessToken: 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
 }).addTo(tilde.map);
 tilde.map.circleGroup = L.featureGroup().addTo(tilde.map);
 tilde.map.markerGroup = L.layerGroup().addTo(tilde.map);
