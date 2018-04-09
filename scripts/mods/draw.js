@@ -39,7 +39,7 @@ tilde.updateNeedle = function() {
 			
 		var first = g
 			.append("text")
-			.text("City’s predicted level of automation")
+			.text("Predicted impact of automation")
 			.attr('text-anchor','middle')
 			.style('font-weight','bold')
 			
