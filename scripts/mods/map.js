@@ -1,4 +1,5 @@
 tilde.map = L.map('map');
+tilde.map.scrollWheelZoom.disable()
 tilde.employmentDomain = [0,7614660]
 tilde.ai_riskDomain = [0.507867024,0.66,0.731438356]
 tilde.colorRange = ["#87FF7B","#FF9300","#AD0012"]

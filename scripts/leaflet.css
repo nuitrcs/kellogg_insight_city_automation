@@ -127,7 +127,7 @@
 	pointer-events: none;
 	}
 .leaflet-top {
-	bottom: 0;
+	bottom: 10%;
 	}
 .leaflet-right {
 	right: 0;
