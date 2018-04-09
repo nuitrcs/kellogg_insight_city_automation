@@ -18,10 +18,10 @@ var barWidth, chart, chartInset, degToRad, repaintGauge,
   el = d3.select('#needle');
 
   margin = {
-    top: 20,
-    right: 20,
-    bottom: 30,
-    left: 20
+    top: el[0][0].offsetWidth/15,
+    right: el[0][0].offsetWidth/15,
+    bottom: el[0][0].offsetWidth/10,
+    left: el[0][0].offsetWidth/15
   };
 
   width = el[0][0].offsetWidth - margin.left - margin.right;
@@ -49,7 +49,8 @@ var barWidth, chart, chartInset, degToRad, repaintGauge,
   svg = el.append('svg').attr('width', width + margin.left + margin.right).attr('height', height + margin.top + margin.bottom);
 
   // Add layer for the panel
-  chart = svg.append('g').attr('transform', "translate(" + ((width + margin.left) / 2) + ", " + ((height + margin.top) / 2) + ")");
+  tilde.dropheight = ((height + margin.top) / 2)
+  chart = svg.append('g').attr('transform', "translate(" + ((width + margin.left) / 2) + ", " + tilde.dropheight + ")");
   chart.append('path').attr('class', "arc chart-filled");
   chart.append('path').attr('class', "arc chart-empty");
 
@@ -71,10 +72,8 @@ var barWidth, chart, chartInset, degToRad, repaintGauge,
 
     arc2.startAngle(arcStartRad + padRad).endAngle(arcEndRad);
 
-
     chart.select(".chart-filled").attr('d', arc1);
     chart.select(".chart-empty").attr('d', arc2);
-
   }
 
 
@@ -116,7 +115,8 @@ var barWidth, chart, chartInset, degToRad, repaintGauge,
       this.perc = perc;
       self = this;
 
-      // Reset pointer position
+      // Reset pointer position/*
+      
       this.el.transition().delay(0).ease('quad').duration(0).select('.needle').tween('reset-progress', function() {
         return function(percentOfPercent) {
           var progress = (1 - percentOfPercent) * oldValue;
@@ -125,7 +125,6 @@ var barWidth, chart, chartInset, degToRad, repaintGauge,
           return d3.select(this).attr('d', recalcPointerPos.call(self, progress));
         };
       });
-
       this.el.transition().delay(300).ease('bounce').duration(1500).select('.needle').tween('progress', function() {
         return function(percentOfPercent) {
           var progress = percentOfPercent * perc;
@@ -134,7 +133,6 @@ var barWidth, chart, chartInset, degToRad, repaintGauge,
           return d3.select(this).attr('d', recalcPointerPos.call(self, progress));
         };
       });
-
     };
 
     return Needle;

@@ -40,6 +40,29 @@ body {
     fill: #464A4F;
 }
 
+#sub_wrapper {
+    pointer-events: none;
+    position:absolute;
+    width:60%;
+    max-width: 320px;
+    right:3.5%;
+    top:63%;
+    z-index:100;
+    font-size: 55%;
+    fill:white;
+}
+
+#needle {
+    width:100%;
+    opacity:0;
+}
+
+#needle_annotation {
+    width:100%;
+    z-index:500;
+}
+
+/*
 #needle {
     pointer-events: none;
     opacity:0;
@@ -47,9 +70,22 @@ body {
     width:60%;
     max-width: 300px;
     right:3.5%;
-    bottom:30%;
+    top:63%;
 }
 
+#needle_annotation {
+    font-size: 55%;
+    fill:white;
+    pointer-events: none;
+    position:absolute;
+    width:60%;
+    max-width: 300px;
+    left:5vw;
+    top:79%;
+    z-index:100;
+    opacity: 0.8;
+}
+*/
 #needle svg {
     position:absolute;
     top:0;

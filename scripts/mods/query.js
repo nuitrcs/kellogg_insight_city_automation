@@ -22,7 +22,7 @@ tilde.query.selectAll = function(source,input_array) {
 }
 tilde.query.prepareData = function() {
 	var data = tilde.current_selection;
-	tilde.map.move(data.Lat,data.Lng)
-	tilde.map.mark(data)
-	tilde.updateNeedle(data)
+	tilde.map.move()
+	tilde.map.mark()
+	tilde.updateNeedle()
 }

@@ -8,7 +8,7 @@ tilde.colorScale = d3.scale.linear().domain(tilde.ai_riskDomain).range(tilde.col
 //mapbox.streets
 //mapbox.light
 L.tileLayer('https://api.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token={accessToken}', {
-  attribution: '<b>Visualization and Map</b>: Frank Elavsky (NUIT) | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
+  attribution: '<b>Visualization and Map</b>: Frank Elavsky (Northwestern IT) | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
   accessToken: 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
 }).addTo(tilde.map);
 tilde.map.circleGroup = L.featureGroup().addTo(tilde.map);
@@ -39,11 +39,13 @@ tilde.map.circleGroup.on('click',function(e){
   tilde.map.circleClick(e)
 });
 
-tilde.map.move = function(lat,lng) {
-  tilde.map.flyTo([lat, lng],8);
+tilde.map.move = function() {
+  var data = tilde.current_selection;
+  tilde.map.flyTo([data.Lat, data.Lng],8);
 }
 
-tilde.map.mark = function(data) {
+tilde.map.mark = function() {
+  var data = tilde.current_selection;
   tilde.map.markerGroup.clearLayers()
   tilde.marker = L.marker([data.Lat, data.Lng]).addTo(tilde.map.markerGroup)
   var popup_html = '<h3><b>' + data['Location'] + '</b></h3><p><b>Automation impact</b>: '+round(data.ai*100,2)+'%<br><b>Affected Employment</b>: '+data.e_display+'</p>';
