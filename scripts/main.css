@@ -15,13 +15,13 @@ body {
 }
 #citations {
     position:relative;
-    top:17vw;
+    top:2vw;
     text-align: center;
     font-size:60%;
 }
 
 .needle-wrapper {
-    height:500px;
+    height:600px;
     position:relative;
 }
 .chart-gauge{
@@ -45,8 +45,8 @@ body {
     position:absolute;
     width:60%;
     max-width: 300px;
-    right:3%;
-    bottom:20%;
+    right:3.5%;
+    bottom:30%;
 }
 
 #needle svg {
