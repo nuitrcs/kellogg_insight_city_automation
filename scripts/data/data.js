@@ -1866,7 +1866,7 @@ tilde.cities = [
  {
    "Location": "Mount Vernon-Anacortes, WA",
    "Lat": 48.4241961,
-   "Lng": -121.7114362,
+   "Lng": -122.4114362,
    "e": 34360,
    "oai": 0.435657382,
    "ai": 0.650774593
