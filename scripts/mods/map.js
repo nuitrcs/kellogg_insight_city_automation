@@ -9,7 +9,7 @@ tilde.colorScale = d3.scale.linear().domain(tilde.ai_riskDomain).range(tilde.col
 //mapbox.streets
 //mapbox.light
 L.tileLayer('https://api.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token={accessToken}', {
-  attribution: '<b>Visualization and Map</b>: Frank Elavsky (Northwestern IT) | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a>',
+  attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/"><b>Improve this map</b></a>',
   accessToken: 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
 }).addTo(tilde.map);
 tilde.map.circleGroup = L.featureGroup().addTo(tilde.map);
