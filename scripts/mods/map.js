@@ -1,19 +1,12 @@
 tilde.map = L.map('map');
 tilde.map.scrollWheelZoom.disable()
-tilde.employmentDomain = [1,7614660]
+tilde.employmentDomain = [0,7614660]
 tilde.ai_riskDomain = [0.507867024,0.66,0.731438356]
 tilde.colorRange = ["#87FF7B","#FF9300","#AD0012"]
 tilde.radiusScale = d3.scale.linear().domain(tilde.employmentDomain).range([1000,60000])
 tilde.colorScale = d3.scale.linear().domain(tilde.ai_riskDomain).range(tilde.colorRange)
-tilde.token = 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
+tilde.token = 'pk.eyJ1Ijoia2VsbG9nZ2luc2lnaHQiLCJhIjoiY2poMmRyYTBlMDNpNjJxcGR0ZWQzN2ZpbyJ9.P2iJTWi-a-cf5tJ0m7520A'
 
-/*
-L.tileLayer('https://api.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token={accessToken}', {
-  attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/"><b>Improve this map</b></a>',
-  maxZoom:18,
-  accessToken: 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
-}).addTo(tilde.map);
-*/
 tilde.map.circleGroup = L.featureGroup().addTo(tilde.map);
 tilde.map.markerGroup = L.layerGroup().addTo(tilde.map);
 tilde.map.setView([39.8283, -98.5795], 3);
