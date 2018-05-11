@@ -1,21 +1,28 @@
 tilde.map = L.map('map');
 tilde.map.scrollWheelZoom.disable()
-tilde.employmentDomain = [0,7614660]
+tilde.employmentDomain = [1,7614660]
 tilde.ai_riskDomain = [0.507867024,0.66,0.731438356]
 tilde.colorRange = ["#87FF7B","#FF9300","#AD0012"]
-tilde.radiusScale = d3.scale.linear().domain(tilde.employmentDomain).range([0,50000])
+tilde.radiusScale = d3.scale.linear().domain(tilde.employmentDomain).range([1000,60000])
 tilde.colorScale = d3.scale.linear().domain(tilde.ai_riskDomain).range(tilde.colorRange)
+tilde.token = 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
 
-//mapbox.streets
-//mapbox.light
+/*
 L.tileLayer('https://api.mapbox.com/v4/mapbox.dark/{z}/{x}/{y}.png?access_token={accessToken}', {
   attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/"><b>Improve this map</b></a>',
+  maxZoom:18,
   accessToken: 'pk.eyJ1IjoiZmVsYXZza3kiLCJhIjoiY2pmb3EwdjF3MHp4eTMybWR2aHVzNG1mOSJ9.QDrrYApB997cGXV7gnoNfQ'
 }).addTo(tilde.map);
+*/
 tilde.map.circleGroup = L.featureGroup().addTo(tilde.map);
 tilde.map.markerGroup = L.layerGroup().addTo(tilde.map);
+tilde.map.setView([39.8283, -98.5795], 3);
 
-tilde.map.setView([39.8283, -98.5795], 4);
+tilde.gl = L.mapboxGL({
+    style: 'mapbox://styles/felavsky/cjh10iif904ai2sk5xfxgfqjv',
+    accessToken: tilde.token,
+    attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> | &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> | <a href="https://www.mapbox.com/map-feedback/"><b>Improve this map</b></a>'
+}).addTo(tilde.map);
 
 for (var num = 0; num < tilde.cities.length; num++) {
   var d = tilde.cities[num];
@@ -31,11 +38,30 @@ for (var num = 0; num < tilde.cities.length; num++) {
   var circle = L.circle([place_lat, place_long], {
       color: tilde.colorScale(d.ai),
       stroke: false,
-      fillOpacity:.9,
+      fillOpacity:.95,
       data: d,
       radius: 314*Math.sqrt(tilde.radiusScale(d.e))
   }).addTo(tilde.map.circleGroup)
 }
+tilde.circles = d3.selectAll('.leaflet-interactive').style('mix-blend-mode','screen')
+
+tilde.map.on('zoomend', function() {
+  if (tilde.map.getZoom() > 11) {
+    tilde.circles
+      .transition()
+      .duration(900)
+      .style('opacity','0')
+  } else if (tilde.map.getZoom() > 8) {
+    tilde.circles
+      .transition()
+      .duration(900)
+      .style('opacity','0.3')
+  } else {
+    tilde.circles
+      .style('opacity','0.95')
+  }
+})
+
 tilde.map.circleGroup.on('click',function(e){
   tilde.map.circleClick(e)
 });

@@ -3,7 +3,7 @@ tilde.notices = {}
 tilde.colors = ["#951F24","#C62026","#DD5524","#EF8F1E","#F2E74A","#A0F582"] //["#951F24","#F2E3E4"]
 tilde.risks = [1,.89,.75,.45,.2,0] //[1,0]
 
-tilde.needleScale = d3.scale.linear().domain([0.507867024,0.731438356]).range([0,1])
+tilde.needleScale = d3.scale.linear().domain([0.502,0.731438356]).range([0,1])
 
 tilde.updateNeedle = function() {
 	d3.selectAll('.needle, .needle-center').style('opacity',0)
@@ -44,7 +44,7 @@ tilde.updateNeedle = function() {
 			.style('font-weight','bold')
 			
 		first.attr('y',function(d,i){
-				var y = +d3.select(this).node().getBBox().height*1.3
+				var y = +d3.select(this).node().getBBox().height*1.1
 				return y
 			})
 			.attr('x',function(d,i){
@@ -57,7 +57,7 @@ tilde.updateNeedle = function() {
 			.style('opacity',0)
 			.transition()
 			.duration(1200)
-			.style('opacity',0.8)
+			.style('opacity',1)
 
 		var second = g
 			.append("text")
@@ -66,7 +66,7 @@ tilde.updateNeedle = function() {
 			.style('font-style','italic')
 			
 		second.attr('y',function(d,i){
-				var y = (+d3.select(this).node().getBBox().height)*2.4
+				var y = (+d3.select(this).node().getBBox().height)*2.2
 				return y
 			})
 			.attr('x',function(d,i){
@@ -79,7 +79,7 @@ tilde.updateNeedle = function() {
 			.style('opacity',0)
 			.transition()
 			.duration(1200)
-			.style('opacity',0.8)
+			.style('opacity',1)
 
 		var g = svg	
 			.append('g')
